@@ -92,7 +92,6 @@ void encrypt(char inp[245343])
             case 'z':
                 oup[i] = '9';
                 break;
-
             case 'A':
                 oup[i] = '%';
                 break;
@@ -391,7 +390,6 @@ void decrypt(char inp[245343])
             case '9':
                 oup[i] = 'z';
                 break;
-
             case '%':
                 oup[i] = 'A';
                 break;
@@ -470,7 +468,6 @@ void decrypt(char inp[245343])
             case ';':
                 oup[i] = 'Z';
                 break;
-
             case 'b':
                 oup[i] = '1';
                 break;
@@ -501,7 +498,6 @@ void decrypt(char inp[245343])
             case 'N':
                 oup[i] = '0';
                 break;
-
             case 'o':
                 oup[i] = '!';
                 break;
