@@ -5,18 +5,20 @@ struct Node
 {
     int data;
     Node *next;
-} * initializer;
+};
 
 Node *CreateList(int ele)
 {
-    initializer = new Node;
+
+    Node *initializer = new Node;
     initializer->data = ele;
     initializer->next = NULL;
 
     return initializer;
 }
+Node *head = CreateList(10);
 
-void Display(Node *head)
+void Display()
 {
     Node *temp = head;
     while (temp != NULL)
@@ -27,20 +29,20 @@ void Display(Node *head)
     cout << "\n";
 }
 
-void Insert(Node *head, int ele, int indx)
+void Insert(int ele, int indx)
 {
     Node *element = new Node;
     element->data = ele;
     element->next = NULL;
     if (indx == 0)
     {
-        element->data = head->data;
-        element->next = head->next;
-        head->data = ele;
-        head->next = element;
-        // *******************Not working  - to solve use head as global variable **********
-        // element->next = head;
-        // head = element;
+        // element->data = head->data;
+        // element->next = head->next;
+        // head->data = ele;
+        // head->next = element;
+        // *******************working  - to solve use head as global variable **********
+        element->next = head;
+        head = element;
         return;
     }
 
@@ -53,17 +55,39 @@ void Insert(Node *head, int ele, int indx)
     temp->next = element;
 }
 
+void Delete(int indx)
+{
+
+    if (indx < 2)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    Node *t1, *t2 = head;
+    for (int i = 0; i < indx - 1; i++)
+    {
+        t1 = t2;
+        t2 = t2->next;
+    }
+    t1->next = t2->next;
+    delete t2;
+}
+
 int main()
 {
-    Node *l1 = CreateList(10);
-    Display(l1);
+    Display();
     // Insert(l1, 10, 0);
-    Insert(l1, 20, 1);
-    Display(l1);
-    Insert(l1, 30, 2);
-    Display(l1);
-    Insert(l1, 100, 0);
-    Display(l1);
+    Insert(20, 1);
+    Display();
+    Insert(30, 2);
+    Display();
+    Insert(100, 0);
+    Display();
+    Delete(3);
+    Display();
 
     return 0;
 }
