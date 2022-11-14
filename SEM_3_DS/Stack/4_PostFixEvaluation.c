@@ -57,7 +57,7 @@ int main()
     gets(PostFix);
     for (int i = 0; i < strlen(PostFix); i++)
     {
-        int a, b;
+        float a, b;
         switch (PostFix[i])
         {
         case '-':

@@ -1,5 +1,6 @@
 {
-    "files.associations": {
-        "BGIDEMO.C": "cpp"
-    }
+  "files.associations": {
+    "BGIDEMO.C": "cpp",
+    "new": "cpp"
+  }
 }
