@@ -7,18 +7,7 @@ struct Node
     Node *next;
 };
 
-Node *CreateList(int ele)
-{
-
-    Node *initializer = new Node;
-    initializer->data = ele;
-    initializer->next = NULL;
-
-    return initializer;
-}
-Node *head = CreateList(10);
-
-void Display()
+void Display(Node *head)
 {
     Node *temp = head;
     while (temp != NULL)
@@ -29,24 +18,24 @@ void Display()
     cout << "\n";
 }
 
-void Insert(int ele, int indx)
+void Insert(Node **head, int ele, int indx)
 {
     Node *element = new Node;
     element->data = ele;
     element->next = NULL;
+    if (*head == NULL)
+    {
+        *head = element;
+        return;
+    }
     if (indx == 0)
     {
-        // element->data = head->data;
-        // element->next = head->next;
-        // head->data = ele;
-        // head->next = element;
-        // *******************working  - to solve use head as global variable **********
-        element->next = head;
-        head = element;
+        element->next = *head;
+        *head = element;
         return;
     }
 
-    Node *temp = head;
+    Node *temp = *head;
     for (int i = 0; i < indx - 1; i++)
     {
         temp = temp->next;
@@ -55,19 +44,19 @@ void Insert(int ele, int indx)
     temp->next = element;
 }
 
-void Delete(int indx)
+void Delete(Node **head, int indx)
 {
 
-    if (indx < 2)
+    if (indx == 0)
     {
-        Node *temp = head;
-        head = head->next;
+        Node *temp = *head;
+        *head = (*head)->next;
         delete temp;
         return;
     }
 
-    Node *t1, *t2 = head;
-    for (int i = 0; i < indx - 1; i++)
+    Node *t1, *t2 = *head;
+    for (int i = 0; i < indx; i++)
     {
         t1 = t2;
         t2 = t2->next;
@@ -78,16 +67,15 @@ void Delete(int indx)
 
 int main()
 {
-    Display();
-    // Insert(l1, 10, 0);
-    Insert(20, 1);
-    Display();
-    Insert(30, 2);
-    Display();
-    Insert(100, 0);
-    Display();
-    Delete(3);
-    Display();
+    Node *List1 = NULL;
+    Insert(&List1, 10, 0);
+    Display(List1);
+    Insert(&List1, 20, 1);
+    Display(List1);
+    Insert(&List1, 30, 2);
+    Display(List1);
+    Delete(&List1, 2);
+    Display(List1);
 
     return 0;
 }
