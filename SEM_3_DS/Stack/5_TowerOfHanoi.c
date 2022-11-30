@@ -7,7 +7,7 @@ int TOH(int n, char A, char B, char C)
 
         TOH(n - 1, A, C, B);
         printf("Transfer from %c to %c\n", A, C);
-        transf++;
+        // transf++;
         TOH(n - 1, B, A, C);
     }
 }
