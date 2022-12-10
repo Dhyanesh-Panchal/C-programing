@@ -1,118 +1,57 @@
 // Dhyanesh Panchal
-// date:-10/10/2022
+// date:-
 
-// Circular queue
+// Topic
 
 #include <stdio.h>
 #include <stdlib.h>
-
 struct Queue
 {
     int front, rear, *arr, size;
-    unsigned int isCircular : 1;
-};
+} q1;
 
 void Display(struct Queue q)
 {
-    if (q.front > q.rear)
-    {
-        if (!(q.isCircular))
-        {
-            printf("The queue is empty.");
-            return;
-        }
-        int i = q.front;
-        if ((q.rear + 1 == q.front))
-
-        {
-            printf("%d ", q.arr[i]);
-            while (i != (q.rear))
-            {
-                i++;
-                printf("%d ", q.arr[i]);
-                if (i == q.size - 1)
-                {
-                    i = -1;
-                    continue;
-                }
-            }
-        }
-        else
-        {
-            while (i != (q.rear + 1))
-            {
-                printf("%d ", q.arr[i]);
-                if (i == q.size - 1)
-                {
-                    i = 0;
-                    continue;
-                }
-                i++;
-            }
-        }
-        return;
-    }
-
-    for (int i = q.front; i <= q.rear; i++)
+    int i = (q.front + 1) % q.size;
+    do
     {
         printf("%d ", q.arr[i]);
-    }
+        i = (i + 1) % q.size;
+    } while (i != (q.rear + 1) % q.size);
+    printf("\n");
 }
 
 void Insert(struct Queue *q, int ele)
 {
-    // checking of Queue is FULL
-    if (((q->rear == (q->size - 1)) && (q->front == 0)) || (((q->rear + 1) == q->front)) && (q->isCircular))
+    if (q->front == (q->rear + 1) % q->size)
     {
-        printf("The queue is full,unable to insert element");
+        printf("The queue is full");
         return;
     }
 
-    if (q->rear == q->size - 1)
-    {
-        q->rear = 0;
-        q->arr[q->rear] = ele;
-        q->isCircular++;
-    }
-    else
-    {
-        q->rear++;
-        q->arr[q->rear] = ele;
-    }
+    q->rear = (q->rear + 1) % q->size;
+    q->arr[q->rear] = ele;
+    return;
 }
 
 int Delete(struct Queue *q)
 {
-    int val;
-    if ((q->front > q->rear) && !(q->isCircular))
+    if (q->front == q->rear)
     {
+        printf("the queue is empty");
         return -1;
     }
-
-    if (q->front == q->size - 1)
-    {
-        val = q->arr[q->front];
-        q->arr[q->front] = 0;
-        q->front = 0;
-        q->isCircular++;
-    }
-
-    else
-    {
-        q->front++;
-        val = q->arr[q->front - 1];
-        q->arr[q->front - 1] = 0;
-    }
-    return val;
+    q->front = (q->front + 1) % q->size;
+    int ele = q->arr[q->front];
+    return ele;
 }
 
 int main()
 {
-    struct Queue q1;
-    q1.rear = -1, q1.front = 0, q1.isCircular = 0;
-    printf("Enter the max size of Queue: ");
+    printf("enter the maximium size of the queue:");
     scanf("%d", &q1.size);
     q1.arr = (int *)calloc(q1.size, sizeof(int));
+    q1.front = 0, q1.rear = 0;
 
     int selector;
     int ele;

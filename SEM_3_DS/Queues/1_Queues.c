@@ -14,12 +14,12 @@ struct Queue
 
 void Display(struct Queue q)
 {
-    if (q.front > q.rear)
+    if (q.front == q.rear)
     {
         printf("The queue is empty.");
         return;
     }
-    for (int i = q.front; i <= q.rear; i++)
+    for (int i = q.front + 1; i <= q.rear; i++)
     {
         printf("%d ", q.arr[i]);
     }
@@ -39,7 +39,7 @@ void Insert(struct Queue *q, int ele)
 int Delete(struct Queue *q)
 {
     int val;
-    if (q->front > q->rear)
+    if (q->front == q->rear)
     {
         printf("The Queue is Empty");
         return -1;
@@ -49,15 +49,13 @@ int Delete(struct Queue *q)
     //     q->arr[i] = q->arr[i + 1];
     // }
     q->front++;
-    val = q->arr[q->front - 1];
-    q->arr[q->front - 1] = 0;
-    return;
+    return q->arr[q->front];
 }
 
 int main()
 {
     struct Queue q1;
-    q1.rear = -1, q1.front = 0;
+    q1.rear = -1, q1.front = -1;
     printf("Enter the max size of Queue: ");
     scanf("%d", &q1.size);
     q1.arr = (int *)calloc(q1.size, sizeof(int));
