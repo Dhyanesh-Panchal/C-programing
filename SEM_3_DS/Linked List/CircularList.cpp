@@ -126,16 +126,51 @@ main()
 {
     l1.first = NULL;
     l1.last = NULL;
-    Display(l1);
-    Insert_First(&l1, 10);
-    Display(l1);
-    Insert_First(&l1, 20);
-    Display(l1);
-    Insert_After(&l1, 30, 0);
-    Display(l1);
-    Insert_After(&l1, 40, 2);
-    Display(l1);
-    Delete_After(&l1, 3);
-    Display(l1);
+    int selector;
+    int ele, indx;
+
+    while (1)
+    {
+        cout << "\nEnter number to select the functionality:\n1.Insert at front\n2.Insert after position\n3.Delete First\n4.Delete After Given index\n5.Display\n6.exit";
+        cin >> selector;
+        switch (selector)
+        {
+        case 1:
+            cout << "Enter the element:";
+            cin >> ele;
+            Insert_First(&l1, ele);
+            cout << "Inserted!\n";
+            continue;
+
+        case 2:
+            cout << "Enter the element and index after which element is inserted:";
+            cin >> ele >> indx;
+            Insert_After(&l1, ele, indx);
+            cout << "Inserted!\n";
+            continue;
+
+        case 3:
+            Delete_First(&l1);
+            continue;
+
+        case 4:
+            cout << "Enter the index:";
+            cin >> indx;
+            Delete_After(&l1, indx);
+            continue;
+
+        case 5:
+            Display(l1);
+            continue;
+
+        case 6:
+            break;
+            // return 0;
+
+        default:
+            continue;
+        }
+        return 0;
+    }
     return 0;
 }

@@ -174,6 +174,6 @@ int main()
         default:
             continue;
         }
-        return 0;
     }
+    return 0;
 }
