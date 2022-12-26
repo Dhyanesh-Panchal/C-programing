@@ -65,7 +65,7 @@ int main()
 
     while (1)
     {
-        printf("\n Enter index to select the functionality:\n 1.display\n2.Insert\n3.Delete\n4.exit");
+        printf("\n Enter index to select the functionality:\n1.display\n2.Insert\n3.Delete\n4.exit");
         scanf("%d", &selector);
         switch (selector)
         {
