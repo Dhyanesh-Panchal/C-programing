@@ -1,67 +1,59 @@
-// Dhyanesh Panchal
-// date-
-
-// Topic
-
 #include <iostream>
 using namespace std;
-
 struct Queue
 {
-    int rear, front;
-    int *arr, size;
-};
+    int front, rear, *arr, size;
+} q1;
 
 void Display(struct Queue q)
 {
-    if (q.front == q.rear)
-    {
-        cout << ("The queue is empty.");
-        return;
-    }
-    for (int i = q.front + 1; i <= q.rear; i++)
+    int i = (q.front + 1) % q.size;
+    do
     {
         cout << " " << q.arr[i];
-    }
+        i = (i + 1) % q.size;
+    } while (i != (q.rear + 1) % q.size);
+    cout << ("\n");
 }
 
 void Insert(struct Queue *q, int ele)
 {
-    if (q->rear == q->size - 1)
+    if (q->front == (q->rear + 1) % q->size)
     {
-        cout << ("The queue is full,unable to insert element");
+        cout << ("The queue is full");
         return;
     }
-    q->rear++;
+
+    q->rear = (q->rear + 1) % q->size;
     q->arr[q->rear] = ele;
+    return;
 }
 
 int Delete(struct Queue *q)
 {
-    int val;
     if (q->front == q->rear)
     {
-        cout << ("The Queue is Empty");
+        cout << ("the queue is empty");
         return -1;
     }
-    q->front++;
-    return q->arr[q->front];
+    q->front = (q->front + 1) % q->size;
+    int ele = q->arr[q->front];
+    return ele;
 }
 
 int main()
 {
-    struct Queue q1;
-    q1.rear = -1, q1.front = -1;
-    cout << ("Enter the max size of Queue: ");
+    cout << ("enter the maximium size of the queue:");
     cin >> q1.size;
     q1.arr = (int *)calloc(q1.size, sizeof(int));
+    q1.front = 0, q1.rear = 0;
 
     int selector;
     int ele;
 
     while (1)
     {
-        cout << ("\n Enter index to select the functionality:\n1.display\n2.Insert\n3.Delete\n4.exit");
+        cout << ("\n Enter index to select the functionality:\n 1.display\n2.Insert\n3.Delete\n4.exit");
         cin >> selector;
         switch (selector)
         {
@@ -80,6 +72,7 @@ int main()
             ele = Delete(&q1);
             if (ele == -1)
             {
+                cout << ("The Queue is Empty");
                 continue;
             }
             cout << "The deleted element is " << ele;
@@ -96,6 +89,5 @@ int main()
         break;
     }
     delete q1.arr;
-
     return 0;
 }
