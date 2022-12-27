@@ -49,7 +49,7 @@ void Insert(PQueue *q, string ele, int myPriority)
         q->front = NewNode;
         return;
     }
-    while (t->next->priority >= myPriority && t->next != NULL)
+    while (t->next != NULL && t->next->priority >= myPriority)
     {
         t = t->next;
     }
@@ -105,55 +105,46 @@ int main()
     q1.front = NULL;
     q1.rear = NULL;
 
-    Insert(&q1, "A", 1);
-    Display(q1);
-    Insert(&q1, "B", 4);
-    Display(q1);
-    Insert(&q1, "C", 2);
-    Display(q1);
-    Insert(&q1, "D", 1);
-    Display(q1);
+    int selector;
+    string name;
+    int priority;
 
-    // int selector;
-    // string name;
-    // int priority;
+    while (1)
+    {
+        cout << ("\n Enter index to select the functionality:\n1.Patient Entry\n2.Call patient from Queue\n3.Dispaly patient queue\n4.exit\n");
+        cin >> selector;
+        switch (selector)
+        {
+        case 1:
+            cout << "Enter name:";
+            cin >> name;
+            cout << "Select disease:\n";
+            for (int i = 0; i < 4; i++)
+            {
+                cout << i + 1 << ")" << DiseaseList[i] << "\n";
+            }
+            cin >> priority;
+            Insert(&q1, name, priority);
+            cout << "Patient Registered Succesfully" << endl;
 
-    // while (1)
-    // {
-    //     cout << ("\n Enter index to select the functionality:\n1.Patient Entry\n2.Call patient from Queue\n3.Dispaly patient queue\n4.exit\n");
-    //     cin >> selector;
-    //     switch (selector)
-    //     {
-    //     case 1:
-    //         cout << "Enter name:";
-    //         cin >> name;
-    //         cout << "Select disease:\n";
-    //         for (int i = 0; i < 4; i++)
-    //         {
-    //             cout << i + 1 << ")" << DiseaseList[i] << "\n";
-    //         }
-    //         cin >> priority;
-    //         Insert(&q1, name, priority);
-    //         cout<<"Patient Registered Succesfully"<<endl;
+            continue;
+        case 2:
+            cout << "Name: " << Delete(&q1) << endl;
+            continue;
+        case 3:
+            Display(q1);
+            continue;
 
-    //         continue;
-    //     case 2:
-    //         cout << "Name: " << Delete(&q1) << endl;
-    //         continue;
-    //     case 3:
-    //         Display(q1);
-    //         continue;
+        case 4:
 
-    //     case 4:
+            break;
 
-    //         break;
+        default:
 
-    //     default:
-
-    //         continue;
-    //     }
-    //     break;
-    // }
+            continue;
+        }
+        break;
+    }
 
     return 0;
 }
