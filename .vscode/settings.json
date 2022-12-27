@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "BGIDEMO.C": "cpp",
-    "new": "cpp"
+    "new": "cpp",
+    "stdio.h": "c"
   }
 }

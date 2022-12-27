@@ -3,7 +3,9 @@
 
 // Stack
 
-#include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 struct Stack
 {
@@ -15,7 +17,7 @@ void display(struct Stack s1)
 {
     for (int i = s1.top; i >= 0; i--)
     {
-        printf(" %d", s1.arr[i]);
+        cout << " " << s1.arr[i];
     }
 }
 
@@ -27,7 +29,7 @@ void push(struct Stack *s1, int ele)
 {
     if (s1->top + 1 == 20)
     {
-        printf("Unble to insert element, stack is full");
+        cout << ("Unble to insert element, stack is full");
         return;
     }
     s1->top++;
@@ -38,7 +40,7 @@ int pop(struct Stack *s1)
 {
     if (s1->top == -1)
     {
-        printf("unable to pop,stack is alrady empty");
+        cout << ("unable to pop,stack is alrady empty");
         return -1;
     }
     s1->top--;
@@ -55,8 +57,8 @@ int main()
 
     while (1)
     {
-        printf("\n Enter index to select the functionality:\n 1.display\n2.peek\n3.push\n4.pop\n5.exit");
-        scanf("%d", &selector);
+        cout << ("\n Enter index to select the functionality:\n 1.display\n2.peek\n3.push\n4.pop\n5.exit");
+        cin >> selector;
         switch (selector)
         {
         case 1:
@@ -64,18 +66,18 @@ int main()
 
             continue;
         case 2:
-            printf("The peeked element is %d", peek(s1));
+            cout << "The peeked element is " << peek(s1);
 
             continue;
         case 3:
 
-            printf("Enter the element:");
-            scanf("%d", &ele);
+            cout << ("Enter the element:");
+            cin >> ele;
             push(&s1, ele);
 
             continue;
         case 4:
-            printf("The popped element is %d", pop(&s1));
+            cout << "The popped element is " << pop(&s1);
             continue;
 
         case 5:

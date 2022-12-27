@@ -3,8 +3,8 @@
 
 // Topic
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+using namespace std;
 struct Queue
 {
     int front, rear, *arr, size;
@@ -15,17 +15,17 @@ void Display(struct Queue q)
     int i = (q.front + 1) % q.size;
     do
     {
-        printf("%d ", q.arr[i]);
+        cout << " " << q.arr[i];
         i = (i + 1) % q.size;
     } while (i != (q.rear + 1) % q.size);
-    printf("\n");
+    cout << ("\n");
 }
 
 void Insert(struct Queue *q, int ele)
 {
     if (q->front == (q->rear + 1) % q->size)
     {
-        printf("The queue is full");
+        cout << ("The queue is full");
         return;
     }
 
@@ -38,7 +38,7 @@ int Delete(struct Queue *q)
 {
     if (q->front == q->rear)
     {
-        printf("the queue is empty");
+        cout << ("the queue is empty");
         return -1;
     }
     q->front = (q->front + 1) % q->size;
@@ -48,9 +48,9 @@ int Delete(struct Queue *q)
 
 int main()
 {
-    printf("enter the maximium size of the queue:");
-    scanf("%d", &q1.size);
-    q1.arr = (int *)calloc(q1.size, sizeof(int));
+    cout<<("enter the maximium size of the queue:");
+    cin>>q1.size;
+    q1.arr = new int[sizeof(int)];
     q1.front = 0, q1.rear = 0;
 
     int selector;
