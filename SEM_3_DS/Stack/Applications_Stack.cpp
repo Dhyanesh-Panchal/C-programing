@@ -1,5 +1,3 @@
-// Reversal of string using stack
-
 #include <iostream>
 
 using namespace std;
@@ -46,6 +44,7 @@ int main()
     }
 
     // printing the string
+    cout << "The Reverse of the string is : ";
     for (int i = 0; i < s.length(); i++)
     {
         cout << pop(&reverse);

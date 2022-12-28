@@ -82,7 +82,7 @@ Node *InsertSort(Node *head, int ele)
             head = Insert(head, ele, 0);
             return head;
         }
-        while (p->next->data < ele)
+        while (p->next != NULL && p->next->data < ele)
         {
             p = p->next;
         }

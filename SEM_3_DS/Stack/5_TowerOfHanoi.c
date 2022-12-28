@@ -6,7 +6,7 @@ int TOH(int n, char A, char B, char C)
     {
 
         TOH(n - 1, A, C, B);
-        printf("Transfer from %c to %c\n", A, C);
+        printf("Transfer %d from %c to %c\n", n, A, C);
         // transf++;
         TOH(n - 1, B, A, C);
     }
@@ -14,6 +14,7 @@ int TOH(int n, char A, char B, char C)
 int main()
 {
     int n;
+    printf("Enter number of towers:");
     scanf("%d", &n);
     TOH(n, 'A', 'B', 'C');
 

@@ -1,8 +1,3 @@
-// Dhyanesh Panchal
-// date:-26/09/2022
-
-// evaluate postfix expression
-
 #include <stdio.h>
 #include <string.h>
 
@@ -12,15 +7,6 @@ struct Stack
     float arr[200];
 };
 
-// int atoi(char arr[50])
-// {
-//     int sum = 0;
-//     for (int i = 0; i < strlen(arr); i++)
-//     {
-//         sum = sum * 10 + (arr[i] - 48);
-//     }
-//     return sum;
-// }
 int atoi(char c)
 {
     return c - 48;

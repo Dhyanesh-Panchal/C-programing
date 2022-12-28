@@ -1,8 +1,3 @@
-// Dhyanesh Panchal
-// date:-19/9/2021
-
-// Stack
-
 #include <iostream>
 
 using namespace std;
@@ -10,11 +5,17 @@ using namespace std;
 struct Stack
 {
     int top;
-    int arr[20];
+    int *arr;
+    int size;
 };
 
 void display(struct Stack s1)
 {
+    if (s1.top == -1)
+    {
+        cout << "Stack is Empty" << endl;
+        return;
+    }
     for (int i = s1.top; i >= 0; i--)
     {
         cout << " " << s1.arr[i];
@@ -27,7 +28,7 @@ int peek(struct Stack s1)
 }
 void push(struct Stack *s1, int ele)
 {
-    if (s1->top + 1 == 20)
+    if (s1->top + 1 == s1->size)
     {
         cout << ("Unble to insert element, stack is full");
         return;
@@ -51,6 +52,9 @@ int main()
 {
     struct Stack s1;
     s1.top = -1;
+    cout << "Enter maximum size of stack:";
+    cin >> s1.size;
+    s1.arr = (int *)calloc(s1.size, sizeof(int));
 
     int selector;
     int ele;
