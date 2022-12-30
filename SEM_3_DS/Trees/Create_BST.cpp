@@ -59,25 +59,6 @@ void InOrdertraversal(Node *root)
     }
 }
 
-void PreOrderTraversal(Node *root)
-{
-    if (root)
-    {
-        cout << root->data << " ";
-        PreOrderTraversal(root->lchild);
-        PreOrderTraversal(root->rchild);
-    }
-}
-void PostOrderTraversal(Node *root)
-{
-    if (root)
-    {
-        PostOrderTraversal(root->lchild);
-        PostOrderTraversal(root->rchild);
-        cout << root->data << " ";
-    }
-}
-
 int main()
 {
     cout << "Enter the length:";
@@ -91,12 +72,8 @@ int main()
         cin >> ele;
         root1 = Insert(root1, ele);
     }
-    cout << "The tree is Created.\nInorder Traversal: ";
+    cout << "The Binary search tree is Created.\nInorder Traversal: ";
     InOrdertraversal(root1);
-    cout << "\nPreorder Traversal: ";
-    PreOrderTraversal(root1);
-    cout << "\nPostorder Traversal: ";
-    PostOrderTraversal(root1);
 
     return 0;
 }
