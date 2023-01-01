@@ -49,15 +49,17 @@ void MergeSort(int A[], int l, int h)
 
 int main()
 {
-    int n;
-    cin >> n;
-    int a[n];
-    for (int i = 0; i < n; i++)
+    cout << "Enter the size:";
+    int size;
+    cin >> size;
+    int a[size];
+    cout << "Enter the Values:";
+    for (int i = 0; i < size; i++)
     {
         cin >> a[i];
     }
-    MergeSort(a, 0, n - 1);
-    for (int i = 0; i < n; i++)
+    MergeSort(a, 0, size - 1);
+    for (int i = 0; i < size; i++)
     {
         cout << a[i] << " ";
     }
