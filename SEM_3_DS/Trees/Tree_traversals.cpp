@@ -1,10 +1,6 @@
 #include <iostream>
 
 using namespace std;
-#include <iostream>
-#include "Queue.cpp"
-
-using namespace std;
 
 struct Node
 {
@@ -100,12 +96,6 @@ int main()
     PreOrderTraversal(root1);
     cout << "\nPostorder Traversal: ";
     PostOrderTraversal(root1);
-
-    return 0;
-}
-
-int main()
-{
 
     return 0;
 }
