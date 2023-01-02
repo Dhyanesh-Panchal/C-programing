@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 int partition(int a[], int l, int h)
@@ -25,14 +24,14 @@ int partition(int a[], int l, int h)
     return j;
 }
 
-void Quick_Sort(int a[], int l, int h)
+void QuickSort(int a[], int l, int h)
 {
     int key;
     if (l < h)
     {
         key = partition(a, l, h);
-        Quick_Sort(a, l, key);
-        Quick_Sort(a, key + 1, h);
+        QuickSort(a, l, key);
+        QuickSort(a, key + 1, h);
     }
 }
 
@@ -41,13 +40,14 @@ int main()
     cout << "Enter the size:";
     int size;
     cin >> size;
-    int a[size];
+    int a[size + 1];
+    a[size] = INT32_MAX;
     cout << "Enter the Values:";
     for (int i = 0; i < size; i++)
     {
         cin >> a[i];
     }
-    Quick_Sort(a, 0, size - 1);
+    QuickSort(a, 0, size);
     cout << "The sorted List is: ";
     for (int i = 0; i < size; i++)
     {

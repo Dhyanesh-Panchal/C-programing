@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 void BubbleSort(int A[], int n)
@@ -21,7 +20,6 @@ void BubbleSort(int A[], int n)
         }
     }
 }
-
 int main()
 {
     cout << "Enter the size:";

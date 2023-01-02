@@ -15,10 +15,8 @@ int LinearSearch(int *a, int n, int key)
 int main()
 {
     int n;
-    cout << "Enter size of input:";
     cin >> n;
     int a[n];
-    cout << "Enter the elements:";
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];

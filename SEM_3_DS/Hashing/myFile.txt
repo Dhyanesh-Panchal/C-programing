@@ -1,0 +1,2 @@
+Hello You are in myFile.txt and this is text inside this file.
+This text is appended by code.
